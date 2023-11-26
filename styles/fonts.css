@@ -1,0 +1,39 @@
+@font-face {
+	font-family: "Rosa Marena";
+	src: url("../fonts/rosa-marena/rosa-marena.eot"); /* IE9 Compat Modes */
+	src: url("../fonts/rosa-marena/rosa-marena.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+		url("../fonts/rosa-marena/rosa-marena.otf") format("opentype"), /* Open Type Font */
+		url("../fonts/rosa-marena/rosa-marena.svg") format("svg"), /* Legacy iOS */
+		url("../fonts/rosa-marena/rosa-marena.ttf") format("truetype"), /* Safari, Android, iOS */
+		url("../fonts/rosa-marena/rosa-marena.woff") format("woff"), /* Modern Browsers */
+		url("../fonts/rosa-marena/rosa-marena.woff2") format("woff2"); /* Modern Browsers */
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Roboto Light";
+	src: url("../fonts/roboto-light/roboto-light.eot"); /* IE9 Compat Modes */
+	src: url("../fonts/roboto-light/roboto-light.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+		url("../fonts/roboto-light/roboto-light.otf") format("opentype"), /* Open Type Font */
+		url("../fonts/roboto-light/roboto-light.svg") format("svg"), /* Legacy iOS */
+		url("../fonts/roboto-light/roboto-light.ttf") format("truetype"), /* Safari, Android, iOS */
+		url("../fonts/roboto-light/roboto-light.woff") format("woff"), /* Modern Browsers */
+		url("../fonts/roboto-light/roboto-light.woff2") format("woff2"); /* Modern Browsers */
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Fahkwang";
+	src: url("../fonts/fahkwang/Fahkwang-Bold.ttf") format("truetype"); /* Safari, Android, iOS */
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Manrope";
+	src: url("../fonts/manrope/Manrope-Medium.ttf") format("truetype"); /* Safari, Android, iOS */
+	font-weight: normal;
+	font-style: normal;
+}

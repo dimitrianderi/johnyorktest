@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>John York - Fashion Photography Portfolio</title>
+  </head>
+  <body>
+    <div id="app" v-cloak>
+        <header class="header" id="home">
+        <div class="container header__container">
+            <div class="header__overlay"></div>
+            <div class="header__overlay-x"></div>
+            <div class="wrapper">
+                <span class="header__author">John York</span>
+                <nav class="header__nav" :class="{'active': isOpenBurger}">
+                    <ul class="header__nav-items">
+                    <li class="header__nav-item"><a href="#home" class="header__nav-link" @click.prevent="scrollToSection">HOME</a></li>
+                    <li class="header__nav-item"><a href="#about" class="header__nav-link" @click.prevent="scrollToSection">ABOUT</a></li>
+                    <li class="header__nav-item"><a href="#portfolio" class="header__nav-link" @click.prevent="scrollToSection">PORTFOLIO</a></li>
+                    <li class="header__nav-item"><a href="#" class="header__nav-link" @click.prevent="scrollToSection">SERVICES</a></li>
+                    <li class="header__nav-item"><a href="#contacts" class="header__nav-link" @click.prevent="scrollToSection">CONTACTS</a></li>
+                    </ul>
+                </nav>
+                <div class="header__burger" @click="toggleBurger">
+                    <span class="header__burger-line"></span>
+                </div>
+            </div>
+            <h1 class="header__title">
+            THE JOURNEY OF A YOUNG DREAMER TO HOLLYWOOD FAME
+            </h1>
+        </div>
+        </header>
+        <main class="main">
+        <section class="about" id="about">
+            <div class="about__overlay"></div>
+            <div class="about__wrapper">
+            <div class="about__content" ref="content">
+                <div class="about__links">
+                <a class="about__link" target="_blank">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a class="about__link" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a class="about__link" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a class="about__link" target="_blank">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                </div>
+                <p class="about__text" v-html="text">
+                    <div class="text__overlay" v-if="!isTextFull"></div>
+                </p>
+            </div>
+            <button type="button" class="btn about__full" @click="toggleFull">
+                {{ isTextFull ? 'HIDE FULL BIO...' : 'READ FULL BIO...' }}
+            </button>
+            </div>
+        </section>
+        <section class="portfolio" id="portfolio">
+            <h2 class="portfolio__title">PORTFOLIO</h2>
+            <div class="portfolio__images">
+            <div
+                class="portfolio__image"
+                v-for="(img, idx) in images"
+                :key="idx"
+                loading="lazy"
+            >
+                <img :src="img" alt="John York" class="portfolio__image-item" />
+            </div>
+            </div>
+            <button
+            type="button"
+            class="btn portfolio__btn"
+            @click="addImages"
+            v-if="!isFullGallery && !isLoading"
+            >
+            MORE...
+            </button>
+            <div class="loader" v-if="isLoading"></div>
+        </section>
+        </main>
+        <footer class="footer" id="contacts">
+            <div class="footer__wrapper">
+                <div class="footer__head">
+                    <h2 class="footer__title">LETS WORK TOGETHER</h2>
+                    <a href="" class="footer__more">GET IN TOUCH</a>
+                </div>
+                <div class="footer__content">
+                    <span class="footer__content-author">John York</span>
+                    <ul class="footer__links">
+                        <li class="footer__link"><a href="" target="_blank">Facebook</a></li>
+                        <li class="footer__link"><a href="" target="_blank"></a>Instagram</a></li>
+                        <li class="footer__link"><a href="" target="_blank">Youtube</a></li>
+                        <li class="footer__link"><a href="" target="_blank">LinkedIn</a></li>
+                    </ul>
+                    <p class="footer__copyright">Copyright © 2023 
+                        Fashion Photography Portfolio 
+                        <span class="footer__line">|</span> 
+                        <br class="footer__br"> Powered by 
+                        <a href="">Kharitonov D.</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
