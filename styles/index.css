@@ -210,7 +210,7 @@ body {
   background-size: cover;
   background-position: center;
   background-position-y: 40px;
-  z-index: 0;
+  z-index: 5;
   min-height: 400px;
 }
 
@@ -372,6 +372,7 @@ body {
   }
 
   .header__author {
+	margin: 10px 0 0 10px;
     letter-spacing: +5px;
   }
 
@@ -485,6 +486,10 @@ body {
 }
 
 /* -------------------------------- MAIN */
+
+.main {
+	z-index: 5;
+}
 
 /* ------------------------------- ABOUT */
 
@@ -614,7 +619,6 @@ body {
 @media screen and (max-width: 767.9px) {
   .about {
     padding-top: 140px;
-	z-index: -1;
   }
 
   .about__content {
