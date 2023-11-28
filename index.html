@@ -20,16 +20,16 @@
             <div class="header__overlay-x"></div>
             <div class="wrapper">
                 <span class="header__author">John York</span>
+                <div class="nav__overlay" :class="{'active': isOpenBurger}" @click="toggleBurger"></div>
                 <nav class="header__nav" :class="{'active': isOpenBurger}">
                     <ul class="header__nav-items">
                     <li class="header__nav-item"><a href="#home" class="header__nav-link" @click.prevent="scrollToSection">HOME</a></li>
                     <li class="header__nav-item"><a href="#about" class="header__nav-link" @click.prevent="scrollToSection">ABOUT</a></li>
                     <li class="header__nav-item"><a href="#portfolio" class="header__nav-link" @click.prevent="scrollToSection">PORTFOLIO</a></li>
-                    <li class="header__nav-item"><a href="#" class="header__nav-link" @click.prevent="scrollToSection">SERVICES</a></li>
                     <li class="header__nav-item"><a href="#contacts" class="header__nav-link" @click.prevent="scrollToSection">CONTACTS</a></li>
                     </ul>
                 </nav>
-                <div class="header__burger" @click="toggleBurger">
+                <div class="header__burger" @click="toggleBurger" :class="{'active': isOpenBurger}">
                     <span class="header__burger-line"></span>
                 </div>
             </div>
@@ -44,14 +44,14 @@
             <div class="about__wrapper">
             <div class="about__content" ref="content">
                 <div class="about__links">
+                <a class="about__link" href="tel:+19292366696">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+                <a class="about__link" href="https://instagram.com/john_york_27?igshid=MzMyNGUyNmU2YQ==" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
                 <a class="about__link" target="_blank">
                     <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a class="about__link" target="_blank">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a class="about__link" target="_blank">
-                    <i class="fa-brands fa-instagram"></i>
                 </a>
                 <a class="about__link" target="_blank">
                     <i class="fa-brands fa-facebook"></i>
@@ -67,22 +67,46 @@
             </div>
         </section>
         <section class="portfolio" id="portfolio">
-            <h2 class="portfolio__title">PORTFOLIO</h2>
+                <h2 class="portfolio__title">PORTFOLIO</h2>
+            <div class="portfolio__tabs">
+                <span class="portfolio__tabs-item tabs__btn" :class="{'active': isJohn}" @click="setTab">Brother John</span>
+                <span class="portfolio__tabs-item tabs__btn" :class="{'active': !isJohn}" @click="setTab">Sister Tiffany</span>
+            </div>
             <div class="portfolio__images">
-            <div
+                <transition name="fade-out" 
                 class="portfolio__image"
-                v-for="(img, idx) in images"
+                v-for="(img, idx) in imagesJohn"
                 :key="idx"
                 loading="lazy"
+                :style="{ 'order': isJohn ? 2 : 1 }"
+                v-show="isJohn"
             >
-                <img :src="img" alt="John York" class="portfolio__image-item" />
-            </div>
+                <a :href="img.href" target="_blank"><img :src="img.src" alt="John York" class="portfolio__image-item" /></a>
+        </transition>
+            <transition name="fade-in"
+            class="portfolio__image"
+            v-for="(img, idx) in imagesTiffany"
+            :key="idx"
+            loading="lazy"
+            :style="{ 'order': !isJohn ? 2 : 1 }"
+            v-show="!isJohn"
+        >
+            <a :href="img.href" target="_blank"><img :src="img.src" alt="John York" class="portfolio__image-item" /></a>
+            </transition>
             </div>
             <button
             type="button"
             class="btn portfolio__btn"
-            @click="addImages"
-            v-if="!isFullGallery && !isLoading"
+            @click="addImagesJohn"
+            v-if="isJohn && !isFullGalleryJohn && !isLoading"
+            >
+            MORE...
+            </button>
+            <button
+            type="button"
+            class="btn portfolio__btn"
+            @click="addImagesTiffany"
+            v-if="!isJohn && !isFullGalleryTiffany && !isLoading"
             >
             MORE...
             </button>
@@ -98,14 +122,14 @@
                 <div class="footer__content">
                     <span class="footer__content-author">John York</span>
                     <ul class="footer__links">
-                        <li class="footer__link"><a href="" target="_blank">Facebook</a></li>
-                        <li class="footer__link"><a href="" target="_blank"></a>Instagram</a></li>
+                        <li class="footer__link"><a href="tel:+19292366696">Phone</a></li>
+                        <li class="footer__link"><a href="https://instagram.com/john_york_27?igshid=MzMyNGUyNmU2YQ==" target="_blank">Instagram</a></li>
+                        <li class="footer__link"><a href="" target="_blank"></a>Facebook</a></li>
                         <li class="footer__link"><a href="" target="_blank">Youtube</a></li>
-                        <li class="footer__link"><a href="" target="_blank">LinkedIn</a></li>
                     </ul>
                     <p class="footer__copyright">Copyright © 2023 
                         Fashion Photography Portfolio 
-                        <span class="footer__line">|</span> 
+                        <span class="footer__line">|</span>
                         <br class="footer__br"> Powered by 
                         <a href="">Kharitonov D.</a>
                     </p>

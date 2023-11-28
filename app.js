@@ -2,37 +2,70 @@ import { text } from './seeders/text.js';
 const App = {
     data() {
         return {
-            images: [
-                './img/John York-1.jpg',
-                './img/John York-2.jpg',
-                './img/John York-3.jpg',
-                './img/John York-4.jpg',
-                './img/John York-5.jpg',
-                './img/John York-6.jpg',
-                './img/John York-7.jpg',
-                './img/John York-8.jpg',
+            imagesJohn: [
+                { src: './img/John/short/John York-1.jpg', href: './img/John/full/John York-1.jpg' },
+                { src: './img/John/short/John York-2.jpg', href: './img/John/full/John York-2.jpg' },
+                { src: './img/John/short/John York-3.jpg', href: './img/John/full/John York-3.jpg' },
+                { src: './img/John/short/John York-4.jpg', href: './img/John/full/John York-4.jpg' },
+                { src: './img/John/short/John York-5.jpg', href: './img/John/full/John York-5.jpg' },
+                { src: './img/John/short/John York-6.jpg', href: './img/John/full/John York-6.jpg' },
+                { src: './img/John/short/John York-7.jpg', href: './img/John/full/John York-7.jpg' },
+                { src: './img/John/short/John York-8.jpg', href: './img/John/full/John York-8.jpg' },
+            ],
+            imagesTiffany: [
+                { src: './img/Tiffany/short/Tiffany York-1.jpg', href: './img/Tiffany/full/Tiffany York-1.jpg' },
+                { src: './img/Tiffany/short/Tiffany York-2.jpg', href: './img/Tiffany/full/Tiffany York-2.jpg' },
+                { src: './img/Tiffany/short/Tiffany York-3.jpg', href: './img/Tiffany/full/Tiffany York-3.jpg' },
+                { src: './img/Tiffany/short/Tiffany York-4.jpg', href: './img/Tiffany/full/Tiffany York-4.jpg' },
+                { src: './img/Tiffany/short/Tiffany York-5.jpg', href: './img/Tiffany/full/Tiffany York-5.jpg' },
+                { src: './img/Tiffany/short/Tiffany York-6.jpg', href: './img/Tiffany/full/Tiffany York-6.jpg' },
+                { src: './img/Tiffany/short/Tiffany York-7.jpg', href: './img/Tiffany/full/Tiffany York-7.jpg' },
+                { src: './img/Tiffany/short/Tiffany York-8.jpg', href: './img/Tiffany/full/Tiffany York-8.jpg' },
             ],
             isLoading: false,
             isTextFull: false,
-            isFullGallery: false,
+            isFullGalleryJohn: false,
+            isFullGalleryTiffany: false,
             text,
             shortHeight: '',
-            isOpenBurger: false
+            isOpenBurger: false,
+            isJohn: true
         }
     },
     methods: {
-        addImages() {
+        addImagesJohn() {
             this.isLoading = true;
             setTimeout(() => {
                 for (let i = 1; i <= 8; i++) {
-                    this.images.push(`./img/John York-${this.images.length + 1}.jpg`);
-                    if (this.images.length >= 40) {
-                        this.isFullGallery = true
+                    const src = `./img/John/short/John York-${this.imagesJohn.length + 1}.jpg`
+                    const href = `./img/John/full/John York-${this.imagesJohn.length + 1}.jpg`
+                    this.imagesJohn.push({ src, href });
+                    if (this.imagesJohn.length >= 40) {
+                        this.isFullGalleryJohn = true
                         break
                     }
                 }
+            }, 100);
+            setTimeout(() => {
                 this.isLoading = false;
-            }, 200);
+            }, 400);
+        },
+        addImagesTiffany() {
+            this.isLoading = true;
+            setTimeout(() => {
+                for (let i = 1; i <= 8; i++) {
+                    const src = `./img/Tiffany/short/Tiffany York-${this.imagesTiffany.length + 1}.jpg`
+                    const href = `./img/Tiffany/full/Tiffany York-${this.imagesTiffany.length + 1}.jpg`
+                    this.imagesTiffany.push({ src, href });
+                    if (this.imagesTiffany.length >= 26) {
+                        this.isFullGalleryTiffany = true
+                        break
+                    }
+                }
+            }, 100);
+            setTimeout(() => {
+                this.isLoading = false;
+            }, 400);
         },
         toggleFull() {
             if (!this.isTextFull) {
@@ -44,16 +77,23 @@ const App = {
             this.isTextFull = !this.isTextFull;
         },
         scrollToSection(e) {
-            this.toggleBurger()
-            const blockID = e.currentTarget.getAttribute('href').substr(1)
+            if (this.isOpenBurger) {
+                this.toggleBurger()
+            }
 
+            const blockID = e.currentTarget.getAttribute('href').substr(1)
             document.getElementById(blockID).scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+                behavior: 'smooth'
             });
         },
         toggleBurger() {
             this.isOpenBurger = !this.isOpenBurger
+            document.body.style.overflow = this.isOpenBurger ? 'hidden' : 'visible'
+        },
+        setTab(e) {
+            const name = e.target.textContent.trim().split(' ').pop()
+
+            this.isJohn = (name === 'John') ? true : false
         }
     }
 }
