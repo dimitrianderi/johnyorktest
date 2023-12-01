@@ -41,6 +41,7 @@ const App = {
                     const href = `./img/John/full/John York-${this.imagesJohn.length + 1}.jpg`
                     this.imagesJohn.push({ src, href });
                     if (this.imagesJohn.length >= 40) {
+                        console.log(src)
                         this.isFullGalleryJohn = true
                         break
                     }
@@ -57,7 +58,7 @@ const App = {
                     const src = `./img/Tiffany/short/Tiffany York-${this.imagesTiffany.length + 1}.jpg`
                     const href = `./img/Tiffany/full/Tiffany York-${this.imagesTiffany.length + 1}.jpg`
                     this.imagesTiffany.push({ src, href });
-                    if (this.imagesTiffany.length >= 26) {
+                    if (this.imagesTiffany.length >= 29) {
                         this.isFullGalleryTiffany = true
                         break
                     }
