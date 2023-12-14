@@ -40,7 +40,7 @@ const App = {
                     const src = `./img/John/short/John York-${this.imagesJohn.length + 1}.jpg`
                     const href = `./img/John/full/John York-${this.imagesJohn.length + 1}.jpg`
                     this.imagesJohn.push({ src, href });
-                    if (this.imagesJohn.length >= 40) {
+                    if (this.imagesJohn.length >= 45) {
                         console.log(src)
                         this.isFullGalleryJohn = true
                         break

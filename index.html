@@ -73,26 +73,26 @@
                 <span class="portfolio__tabs-item tabs__btn" :class="{'active': !isJohn}" @click="setTab">John's Sister Tiffany</span>
             </div>
             <div class="portfolio__images">
-                <transition name="fade-out" 
+                <transition name="fade-in" 
                 class="portfolio__image"
                 v-for="(img, idx) in imagesJohn"
                 :key="idx"
                 loading="lazy"
-                :style="{ 'order': isJohn ? 2 : 1 }"
+                :style="{ 'order': isJohn ? 1 : 0 }"
                 v-show="isJohn"
             >
-                <a :href="img.href" target="_blank"><img :src="img.src" alt="John York" class="portfolio__image-item" /></a>
+                <a :href="img.href" target="_blank"><h1></h1><img :src="img.src" alt="John York" class="portfolio__image-item" /></a>
         </transition>
             <transition name="fade-in"
             class="portfolio__image"
             v-for="(img, idx) in imagesTiffany"
             :key="idx"
             loading="lazy"
-            :style="{ 'order': !isJohn ? 2 : 1 }"
+            :style="{ 'order': !isJohn ? 1 : 0 }"
             v-show="!isJohn"
         >
             <a :href="img.href" target="_blank"><img :src="img.src" alt="John York" class="portfolio__image-item" /></a>
-            </transition>
+        </transition>
             </div>
             <button
             type="button"
